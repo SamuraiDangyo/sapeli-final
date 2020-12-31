@@ -1,16 +1,18 @@
 # Definitions
 
 CC=clang
-CFLAGS=-march=native -O2 -Wall -Wshadow -pedantic -Wextra -DNDEBUG
-FILES=Sapeli.c
+CFLAGS=-march=native -O3 -Wall -Wshadow -Wextra -pedantic -DNDEBUG
 EXE=sapeli
 
 # Targets
 
 all:
-	$(CC) $(CFLAGS) $(FILES) -o $(EXE)
+	$(CC) $(CFLAGS) Sapeli.c -o $(EXE)
+
+xboard:
+	xboard -fUCI -fcp ./$(EXE)
 
 clean:
 	rm -f $(EXE)
 
-.PHONY: all clean
+.PHONY: all xboard clean
